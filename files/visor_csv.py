@@ -22,7 +22,7 @@ class Ventana2:
         Label(self.roott,text='Paso2. Crear un DataFrame por columnas a partir de los datos').place(x=0, y=100)
         Label(self.roott, text='Paso3. Visualizar').place(x=0, y=160)
         Label(self.roott, text='Metodo').place(x=0, y=180)
-        Label(self.roott, text='Grafico').place(x=150, y=180)
+        Label(self.roott, text='Grafico').place(x=120, y=180)
         Label(self.roott, text='X=').place(x=210, y=200)
         Label(self.roott, text='Y=').place(x=210, y=230)
         
@@ -30,11 +30,11 @@ class Ventana2:
         
 
     def Botones(self):
-        Button(self.roott, text='Buscar', command=self.Cargar).place(x=0, y=25)
-        Button(self.roott,text='Crear', command=self.Crear).place(x=0, y=120)
-        Button(self.roott,text='Agrupar', command=self.Binns).place(x=0, y=200)
-        Button(self.roott,text='Plot', command=self.PlotBinns).place(x=150, y=200)
-        Button(self.roott, text='Salir', command=self.Salir).place(x=300, y=305)
+        Button(self.roott, text='Buscar', command=self.Cargar, width=10).place(x=0, y=25)
+        Button(self.roott,text='Crear', command=self.Crear, width=10).place(x=0, y=120)
+        Button(self.roott,text='Agrupar', command=self.Binns, width=10).place(x=0, y=200)
+        Button(self.roott,text='Plot', command=self.PlotBinns, width=10).place(x=120, y=200)
+        Button(self.roott, text='Salir', command=self.Salir, width=10).place(x=250, y=305)
 
     def Entradas(self):
         self.col1 = IntVar()
@@ -53,11 +53,15 @@ class Ventana2:
     def Crear(self):
         self.url = self.filename_csv
         self.df1 = pd.read_csv(self.url, header=None)
-        raiz = Tk()
-        raiz.title('DataFrame')
-        raiz.resizable(0,0)
-        Label(raiz, text=f'{self.df1}', justify='left').pack()
-        raiz.mainloop()
+        try:
+           raiz = Tk()
+           raiz.title('DataFrame')
+           raiz.resizable(0,0)
+           Label(raiz, text=f'{self.df1}', justify='left').pack()
+           raiz.mainloop()
+        except IOError:
+            pass
+        
 
     def Binns(self):
         self.columnas1 = self.col1.get()
@@ -68,9 +72,13 @@ class Ventana2:
         print(self.ejex, self.ejey)
 
     def PlotBinns(self):
-        self.ejex.astype('int64')
-        mpl.plot(self.ejex, self.ejey)
-        mpl.show()
+        try:
+           self.ejex.astype('int64')
+           mpl.plot(self.ejex, self.ejey)
+           mpl.show()
+        except:
+           mBox.showerror('Error', 'Ha ocurrido algun error')
+
 
     def Salir(self):
         self.roott.quit()
