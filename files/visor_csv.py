@@ -15,20 +15,15 @@ class Ventana2:
         self.Botones()
         self.Entradas()
 
-
-
     def Labels(self):
         Label(self.roott,text='Paso1. Elegir archivo con extension .csv').place(x=0, y=0)
         Label(self.roott,text='Paso2. Crear un DataFrame por columnas a partir de los datos').place(x=0, y=100)
         Label(self.roott, text='Paso3. Visualizar').place(x=0, y=160)
         Label(self.roott, text='Metodo').place(x=0, y=180)
         Label(self.roott, text='Grafico').place(x=120, y=180)
-        Label(self.roott, text='X=').place(x=210, y=200)
-        Label(self.roott, text='Y=').place(x=210, y=230)
+        Label(self.roott, text='Y 1:=').place(x=200, y=200)
+        Label(self.roott, text='X 1:=').place(x=200, y=230)
         
-
-        
-
     def Botones(self):
         Button(self.roott, text='Buscar', command=self.Cargar, width=10).place(x=0, y=25)
         Button(self.roott,text='Crear', command=self.Crear, width=10).place(x=0, y=120)
@@ -68,13 +63,12 @@ class Ventana2:
         self.columnas2 = self.col2.get()
         self.ejex = self.df1.iloc[2:, self.columnas1]
         self.ejey = self.df1.iloc[2:, self.columnas2]
-        mBox.showinfo('Nuevo Set', f'{self.ejex, self.ejey}')
-        print(self.ejex, self.ejey)
+        mBox.showinfo('Nuevo Set', f'{self.ejey, self.ejex}')
 
     def PlotBinns(self):
         try:
            self.ejex.astype('int64')
-           mpl.plot(self.ejex, self.ejey)
+           mpl.bar(self.ejey, self.ejex)
            mpl.show()
         except:
            mBox.showerror('Error', 'Ha ocurrido algun error')
