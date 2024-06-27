@@ -5,15 +5,16 @@ from tkinter import messagebox as mBox
 from tkinter.ttk import Combobox
 from tkinter import filedialog
 from tkinter import Menu
+from tkinter import PhotoImage
 
 
 class Ventana:
     def __init__(self, interfaz) -> None:
         self.root = interfaz
-        self.root.geometry("500x500")
+        self.root.geometry("500x515")
         self.root.title("AnalizatorX")
         self.root.resizable(0,0)
-        #falta el icono aqui
+        self.root.iconbitmap('roadmap0.ico')
         self.Letras()
         self.Botones()
         self.Lista()
@@ -37,11 +38,12 @@ class Ventana:
     def Letras(self):
         Label(self.root, text='Paso1. Seleccione una fuente|extensión de datos para cargar').place(x=0, y=400)
         Label(self.root, text='Este programa pretende ser una guía de estudio para integrar el análisis de datos\n a la creación de GUI con librerias tkinter y pandas', justify='left').place(x=5, y=20)
-
+        self.imagen = PhotoImage(file="images/roadmap0.png")
+        Label(self.root, image=self.imagen, bd=12).place(x=50 ,y=60)
 
     def Botones(self):
-        self.seleccion1 = Button(self.root, text='Seleccionar', command= self.ejecutar_seleccion, width=10).place(x=400, y=430)
-        Button(self.root, text='Salir', command= self.Salida, width=10).place(x=400, y=460)
+        self.seleccion1 = Button(self.root, text='Seleccionar', command= self.ejecutar_seleccion, width=10, background='lightgreen').place(x=250, y=428)
+        Button(self.root, text='Salir', command= self.Salida, width=10, background='lightblue').place(x=400, y=460)
         
     def Lista(self):
         self.seleccio = StringVar()
