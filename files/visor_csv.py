@@ -16,11 +16,11 @@ class Ventana2:
         self.Entradas()
 
     def Labels(self):
-        Label(self.roott,text='Paso1. Elegir archivo con extension .csv').place(x=0, y=0)
+        Label(self.roott,text='Paso1. Elegir archivo con extensión .csv').place(x=0, y=0)
         Label(self.roott,text='Paso2. Crear un DataFrame por columnas a partir de los datos').place(x=0, y=100)
         Label(self.roott, text='Paso3. Visualizar').place(x=0, y=160)
-        Label(self.roott, text='Metodo').place(x=0, y=180)
-        Label(self.roott, text='Grafico').place(x=120, y=180)
+        Label(self.roott, text='Método').place(x=0, y=180)
+        Label(self.roott, text='Gráfico').place(x=120, y=180)
         Label(self.roott, text='Y 1:=').place(x=200, y=200)
         Label(self.roott, text='X 1:=').place(x=200, y=230)
         
@@ -40,7 +40,7 @@ class Ventana2:
     def Cargar(self):
         self.filename_csv = StringVar()
         self.filename_csv = filedialog.askopenfilename(filetypes=('archivos .csv', '* .csv'))
-        Label(self.roott, text=f' La direccion del archivo que se esta usando es:\n {self.filename_csv}', justify='left', state='disabled').place(x=0 ,y=50)
+        Label(self.roott, text=f' La ruta del archivo que se está usando es:\n {self.filename_csv}', justify='left', state='disabled').place(x=0 ,y=50)
         with open(f'{self.filename_csv}', 'r')as file:
             self.path = file.read()
             self.df = pd.read_csv(self.path)    
