@@ -23,7 +23,7 @@ class Ventana:
         self.root.config(menu=self.barramenu)
 
         self.opc1 = Menu(self.barramenu, tearoff=0)
-        self.opc1.add_command(label='menu1')
+        self.opc1.add_command(label='Ayuda', command=self.Menux)
         self.barramenu.add_cascade(label='archivo', menu=self.opc1)
 
     def Letras(self):
@@ -68,6 +68,9 @@ class Ventana:
 
         elif self.seleccio.get() == 'sql-conect':
             print('funciona sql-conect')
+
+    def Menux(self):
+        import menu.working
 
     def Salida(self):
         self.root.quit()
