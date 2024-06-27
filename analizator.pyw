@@ -11,8 +11,9 @@ class Ventana:
     def __init__(self, interfaz) -> None:
         self.root = interfaz
         self.root.geometry("500x500")
-        self.root.title("Analizator")
+        self.root.title("AnalizatorX")
         self.root.resizable(0,0)
+        #falta el icono aqui
         self.Letras()
         self.Botones()
         self.Lista()
@@ -23,11 +24,20 @@ class Ventana:
         self.root.config(menu=self.barramenu)
 
         self.opc1 = Menu(self.barramenu, tearoff=0)
-        self.opc1.add_command(label='Ayuda', command=self.Menux)
-        self.barramenu.add_cascade(label='archivo', menu=self.opc1)
+        self.opc1.add_command(label='Manual se uso', command=self.Menux)
+
+        self.opc2 = Menu(self.barramenu, tearoff=0)
+        self.opc2.add_command(label='Actualización', command= self.Menu2)
+        self.opc2.add_separator()
+        self.opc2.add_command(label='Contacto', command= self.Contactos)
+
+        self.barramenu.add_cascade(label='Ayuda', menu=self.opc1)
+        self.barramenu.add_cascade(label='Soporte',menu=self.opc2)
 
     def Letras(self):
-        Label(self.root, text='Paso1. Seleccione una fuente|extension de datos para cargar').place(x=0, y=400)
+        Label(self.root, text='Paso1. Seleccione una fuente|extensión de datos para cargar').place(x=0, y=400)
+        Label(self.root, text='Este programa pretende ser una guía de estudio para integrar el análisis de datos\n a la creación de GUI con librerias tkinter y pandas', justify='left').place(x=5, y=20)
+
 
     def Botones(self):
         self.seleccion1 = Button(self.root, text='Seleccionar', command= self.ejecutar_seleccion, width=10).place(x=400, y=430)
@@ -43,34 +53,40 @@ class Ventana:
             try:
                 import files.visor_csv
             except IOError:
-                mBox.showerror('Error!!!', 'Ocurrio algun problema al abrir el archivo')
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
           
         elif self.seleccio.get() == '.json':
             try:
                 self.filename_json =filedialog.askopenfilename(filetypes=('archivos .json', '* .json'))
                 print(self.filename_json)
             except IOError:
-                mBox.showerror('Error!!!', 'Ocurrio algun problema al abrir el archivo')
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == '.xlsx':
             try:
                 self.filename_xlsx =filedialog.askopenfilename(filetypes=('archivos .xlsx', '* .xlsx'))
                 print(self.filename_xlsx)
             except IOError:
-                mBox.showerror('Error!!!', 'Ocurrio algun problema al abrir el archivo')
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == '.xml':
             try:
                 self.filename_xml =filedialog.askopenfilename(filetypes=('archivos .xml', '* .xml'))
                 print(self.filename_xml)
             except IOError:
-                mBox.showerror('Error!!!', 'Ocurrio algun problema al abrir el archivo')
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == 'sql-conect':
             print('funciona sql-conect')
 
     def Menux(self):
         import menu.working
+
+    def Menu2(self):
+        import menu.menu2
+
+    def Contactos(self):
+        import menu.contact
 
     def Salida(self):
         self.root.quit()
