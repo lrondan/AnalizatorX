@@ -47,7 +47,8 @@ class Ventana:
         
     def Lista(self):
         self.seleccio = StringVar()
-        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', '.xlsx','xml', 'sql-conect')).place(x=20, y= 430)
+        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', '.xlsx','.xml', 'sql-conect')).place(x=20, y= 430)
+
         
 
     def ejecutar_seleccion(self):
@@ -59,27 +60,27 @@ class Ventana:
           
         elif self.seleccio.get() == '.json':
             try:
-                self.filename_json =filedialog.askopenfilename(filetypes=('archivos .json', '* .json'))
-                print(self.filename_json)
+                import files.visor_json
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == '.xlsx':
             try:
-                self.filename_xlsx =filedialog.askopenfilename(filetypes=('archivos .xlsx', '* .xlsx'))
-                print(self.filename_xlsx)
+                import files.visor_xlsx
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == '.xml':
             try:
-                self.filename_xml =filedialog.askopenfilename(filetypes=('archivos .xml', '* .xml'))
-                print(self.filename_xml)
+                import files.visor_xml
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
         elif self.seleccio.get() == 'sql-conect':
-            print('funciona sql-conect')
+            try:
+                import conector.conector_sql_python
+            except IOError:
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
     def Menux(self):
         import menu.working
