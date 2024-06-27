@@ -1,3 +1,3 @@
 import webbrowser
 
-webbrowser.open(url='direccion de github')
+webbrowser.open(url='https://github.com/lrondan/AnalizatorX')
