@@ -4,12 +4,28 @@ body {
 
 h1 {
     color: rgb(44, 255, 25);
+    font-style: italic;
+    font-size: large;
 }
 
 h2 {
     color: rgb(204, 154, 252);
+    font-style: italic;
+    font-size: medium;
 }
 
 p1{
     color: rgb(255, 254, 254);
+    font-style: normal;
+}
+
+h3{
+    color: antiquewhite;
+    font-style: italic;
+    font-size: small;
+}
+
+p2 {
+    color: aqua;
+    font-style: oblique;
 }
