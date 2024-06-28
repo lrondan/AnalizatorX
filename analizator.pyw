@@ -47,7 +47,7 @@ class Ventana:
         
     def Lista(self):
         self.seleccio = StringVar()
-        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', '.xml', 'sql-conect')).place(x=20, y= 430)
+        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', 'sql-conect')).place(x=20, y= 430)
 
         
 
@@ -61,12 +61,6 @@ class Ventana:
         elif self.seleccio.get() == '.json':
             try:
                 import files.visor_json
-            except IOError:
-                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
-
-        elif self.seleccio.get() == '.xml':
-            try:
-                import files.visor_xml
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
