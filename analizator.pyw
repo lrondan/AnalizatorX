@@ -25,7 +25,7 @@ class Ventana:
         self.root.config(menu=self.barramenu)
 
         self.opc1 = Menu(self.barramenu, tearoff=0)
-        self.opc1.add_command(label='Manual se uso', command=self.Menux)
+        self.opc1.add_command(label='Manual de uso', command=self.Menux)
 
         self.opc2 = Menu(self.barramenu, tearoff=0)
         self.opc2.add_command(label='Actualización', command= self.Menu2)
