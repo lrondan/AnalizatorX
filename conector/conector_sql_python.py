@@ -1,1 +1,0 @@
-print('conector sql-python')

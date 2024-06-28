@@ -47,7 +47,7 @@ class Ventana:
         
     def Lista(self):
         self.seleccio = StringVar()
-        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', 'sql-conect')).place(x=20, y= 430)
+        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', 'web_scraping')).place(x=20, y= 430)
 
         
 
@@ -64,9 +64,9 @@ class Ventana:
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
-        elif self.seleccio.get() == 'sql-conect':
+        elif self.seleccio.get() == 'web_scraping':
             try:
-                import conector.conector_sql_python
+                import scraping.request
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
