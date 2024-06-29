@@ -11,6 +11,7 @@ class Ventana2:
         self.roott.title('csv files')
         self.roott.geometry('350x350')
         self.roott.resizable(0,0)
+        self.roott.iconbitmap('roadmap0.ico')
         self.Labels()
         self.Botones()
         self.Entradas()

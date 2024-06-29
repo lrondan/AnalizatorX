@@ -12,6 +12,7 @@ class Ventana3:
         self.roottt.title('json files')
         self.roottt.geometry('350x350')
         self.roottt.resizable(0,0)
+        self.roottt.iconbitmap('roadmap0.ico')
         self.Labels3()
         self.Botones3()
         self.Entradas3()
