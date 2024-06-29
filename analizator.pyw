@@ -66,7 +66,7 @@ class Ventana:
 
         elif self.seleccio.get() == 'web_scraping':
             try:
-                import scraping.request
+                import scraping.extractor
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
