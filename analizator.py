@@ -47,7 +47,7 @@ class Ventana:
         
     def Lista(self):
         self.seleccio = StringVar()
-        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', 'web_scraping')).place(x=20, y= 430)
+        self.numero = Combobox(self.root, textvariable=self.seleccio, width=30, state='readonly', values=('.csv', '.json', 'web_scraping', 'conex_bd')).place(x=20, y= 430)
 
         
 
@@ -67,6 +67,12 @@ class Ventana:
         elif self.seleccio.get() == 'web_scraping':
             try:
                 import scraping.extractor
+            except IOError:
+                mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
+
+        elif self.seleccio.get() == 'conex_bd':
+            try:
+                import db_connect.db_main
             except IOError:
                 mBox.showerror('Error!!!', 'Ocurrió algun problema al abrir el archivo')
 
